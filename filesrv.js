@@ -7,7 +7,7 @@ var http=require("http")
 var server=http.createServer(   
    function(request,response){
       console.log("svrcbk")
-      //response.writeHead(200, {'Content-Type': 'text/plain'});
+      response.writeHead(200, {'Content-Type': 'text/plain'});
       var strm=fs.createReadStream(file)
       strm.pipe(response, { end: false })  //.pipe(process.stdout)
       strm.on("end", function(){
@@ -17,4 +17,4 @@ var server=http.createServer(
       }
    )
 
-server.listen(port,"localhost")
+server.listen(port) //,"127.0.0.1")
